@@ -5,4 +5,80 @@
 
 body {
     background-color: blanchedalmond;
+    display: flex;
+    height: 100vh;
+}
+
+#sidebar {
+    flex: 1;
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar > div {
+    font-size: 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;;
+}
+
+#home {
+    flex: 1;
+    border-bottom: 5px black solid;
+}
+
+#projects {
+    flex: 7;
+}
+
+#home:hover {
+    background-color: rgb(85, 253, 197);
+}
+
+#content {
+    flex: 3;
+    background-color: crimson;
+}
+
+.expand {
+    display: flex;
+    flex-direction: column;
+}
+
+.expand > div:first-child, #addProject {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#addProject {
+    border-top: 3px solid black;
+}
+
+.expand > div:first-child {
+    border-bottom: 3px solid black;
+}
+
+
+.expand .shortcut {
+    background-color: rgba(112, 201, 171, 0.616);
+    padding: 5%;
+    border-bottom: 3px solid gray;
+}
+
+.expand .shortcuts {
+    overflow-y: auto;
+    max-height: 70vh;
+}
+
+.shortcut:hover {
+    background-color: rgb(112, 201, 171)
+}
+
+.expand > div {
+    flex: 5;
+    text-align: center;
 }
