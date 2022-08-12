@@ -48,10 +48,13 @@ body {
 
 .expand > div:first-child, #addProject {
     flex: 1;
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.expand > * {
+    width: 100%;
 }
 
 #addProject {
@@ -67,6 +70,7 @@ body {
     background-color: rgba(112, 201, 171, 0.616);
     padding: 5%;
     border-bottom: 3px solid gray;
+    word-break: break-all;
 }
 
 .expand .shortcuts {
