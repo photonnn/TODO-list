@@ -1,19 +1,10 @@
-const addTaskD = (description) => {
+const addTaskD = (task) => {
     const div = document.createElement("div");
-    div.classList.add("task");
-    div.textContent = description;
+    div.classList.add(`${task.id}`);
+    div.textContent = task.description;
 
     const tasks = document.querySelector("#tasks");
     tasks.appendChild(div);
-};
-
-const changeProjectD = (project) => {
-    eraseTasksD();
-    for (let em in project.tasks) {
-        console.log(em);
-        addTaskD(project.tasks[em].description);
-    }
-    return project;
 };
 
 const eraseTasksD = () => {
@@ -23,6 +14,21 @@ const eraseTasksD = () => {
     }
 };
 
-export { addTaskD, changeProjectD };
+const eraseTaskD = (id) => {
+    const task = document.querySelector(`.${id}`);
+    task.remove();
+};
+
+const addProjectD = (project, id) => {
+    const div = document.createElement("div");
+    div.classList.add("shortcut");
+    div.id = id;
+    div.textContent = project.title;
+
+    const shortcuts = document.querySelector(".shortcuts");
+    shortcuts.append(div);
+};
+
+export { addTaskD, eraseTasksD, eraseTaskD, addProjectD };
 
 // D at the end represents DOM

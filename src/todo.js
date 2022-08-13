@@ -1,41 +1,29 @@
-let currentProject = "home";
 const projects = {
-    home: {
+    HOME: {
         tasks: {
             // example
-            title: {
-                title: "Default",
-                description: "Default",
-                dueDate: "1. 1. 2023",
-                priority: "High",
-            }
+            //title: {
+              //  title: "Default",
+               // description: "Default",
+               // dueDate: "1. 1. 2023",
+               // priority: "High",
+            //}
         },
+        id: "Pr0",
     },
-    1: {
-        tasks: {
-            presneto: {
-                title: "Presneto",
-                description: "Danes je sreda",
-                dueDate: "1. 1. 2028",
-                priority: "Must",
-            },
-            avgust: {
-                title: "AVGUSTUS",
-                description: "A se ti je ze zmesal",
-                dueDate: "1. 5. 2024",
-                priority: "Low",
-            }
-        }
-    }
 };
 
-const todo = (title, description, dueDate, priority) => {
-    return { title, description, dueDate, priority };
+const todo = (title, description, dueDate, priority, id) => {
+    return { title, description, dueDate, priority, id };
 };
 
 function eraseTask(project, task) {
-    delete projects[project].tasks[task];
+    delete projects[project].tasks[task.title];
 }
 
+const projectFactory = (title, dueDate, priority, id) => {
+    return { title, dueDate, priority, id};
+};
+
 // temp
-export { projects, todo, currentProject }
+export { projects, todo, eraseTask, projectFactory }

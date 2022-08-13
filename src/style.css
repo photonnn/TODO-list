@@ -24,7 +24,7 @@ body {
     align-items: center;;
 }
 
-#home {
+.home {
     flex: 1;
     border-bottom: 5px black solid;
     user-select: none;
@@ -34,7 +34,7 @@ body {
     flex: 7;
 }
 
-#home:hover {
+.home:hover {
     background-color: rgb(85, 253, 197);
     cursor: pointer;
 }
@@ -114,11 +114,13 @@ body {
     padding: 3%;
 }
 
-.task {
+#tasks div {
     height: 300px;
     background-color: rgba(190, 34, 34, 0.795);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
 #content > *:not(#tasks) {
