@@ -7,8 +7,16 @@ let id = 1;
 // add a task to the currently selected project
 const addTask = document.querySelector("#addTask");
 addTask.addEventListener('click', () => {
+
+    const form = document.querySelector("form");
+    form.style.visibility = "visible";
+
+
+
+
+
     // currently default properties, later to be done via form
-    const task = todo(prompt("Give me a title"), "Make it happen",
+    const task = todo("Title", "Make it happen",
         "1. 1. 2024", "High", "task" + id.toString());
     id++;
     const currentProject = document.querySelector(".selected").textContent;
@@ -16,8 +24,10 @@ addTask.addEventListener('click', () => {
     addTaskD(task, currentProject);
     setupTaskD(task, currentProject);
 
-    //projects.home.push(todo("Random Task", "1. 1. 2020", "Normal"));
-    //DOM.addTask(projects);
+
+
+
+    //form.style.visibility = "hidden";
 });
 
 let projectID = 1;
@@ -53,3 +63,14 @@ const addProjectListener = (id) => {
 }
 
 addProjectListener("Pr0");
+
+// navigate calender
+const left = document.querySelector('.calLeft');
+const right = document.querySelector('.calRight');
+const input = document.querySelector('#date');
+left.addEventListener('click', () => {
+    input.stepDown();
+});
+right.addEventListener('click', () => {
+    input.stepUp();
+});
