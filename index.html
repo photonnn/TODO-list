@@ -36,8 +36,8 @@
         </div>
         <div>
             <label for="description">Description:</label>
-            <textarea name="description" id="description" cols="30"
-                rows="10"></textarea>
+            <textarea name="description" id="description" cols="30" rows="10"
+                required></textarea>
         </div>
         <div>
             <label for="dueDate">Due Date:</label>
@@ -45,8 +45,12 @@
         </div>
         <div>
             <label for="priority">Priority:</label>
-            <input type="text" name="priority" id="priority" maxlength="50"
-                required>
+            <select id="priority" name="priority">
+                <option value="Must">Must</option>
+                <option value="Necessary">Necessary</option>
+                <option value="Ignorable">Ignorable</option>
+                <option value="Maybe">Maybe</option>
+            </select>
         </div>
         <div class="fbtn">
             <button type="button" class="red">No</button>
