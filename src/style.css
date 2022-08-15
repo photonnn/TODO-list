@@ -109,8 +109,8 @@ body {
 #tasks {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, 45vh);
+    grid-gap: 2vh;
     overflow-y: auto;
     width: 100%;
     padding: 3%;
@@ -205,7 +205,7 @@ form label {
     font-size: 3vh;
 }
 
-form input {
+form input, form select {
     flex: 6;
     min-width: 30vh;
 }

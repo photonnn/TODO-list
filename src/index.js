@@ -1,10 +1,9 @@
 import './style.css';
 import './eventListeners';
 import './date';
+import { loadFromStorage } from './control';
 
-console.log("Hello World");
-
-
+loadFromStorage();
 /*
     TODO:
     - Configure dates properly
@@ -22,12 +21,16 @@ console.log("Hello World");
 
 
 
-    - Add a form for user input
+    - Add a form for user input -/-
     - Style changes: Redo task squares
-    - Task Finish button
     - Task description/edit system
-    - make priorites matter, border color?
-    - Add Local storage
+    - make priorites matter, border color
+    - FIX remove button, namely when you don't input anything in the form
+        multiple tasks are made event though there is only one saved in the 
+        object. it shows correctly after refresh
+    - FIX: prevent from changing projects when the form is opened,
+        consider adding a cover just like in the library project
+    - Add Local storage -/-
 */
 
 

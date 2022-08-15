@@ -1,7 +1,6 @@
 const addTaskD = (task) => {
     const div = document.createElement("div");
     div.classList.add(`${task.id}`);
-    div.textContent = task.description;
 
     const tasks = document.querySelector("#tasks");
     tasks.appendChild(div);

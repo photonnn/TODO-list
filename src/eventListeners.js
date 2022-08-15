@@ -7,30 +7,53 @@ let id = 1;
 // add a task to the currently selected project
 const addTask = document.querySelector("#addTask");
 addTask.addEventListener('click', () => {
-
     const form = document.querySelector("form");
     form.style.visibility = "visible";
+});
 
+const gbutton = document.querySelector(".green");
+gbutton.addEventListener('click', () => {
+    const task = getTask();
+    resetForm();
 
-
-
-
-    // currently default properties, later to be done via form
-    const task = todo("Title", "Make it happen",
-        "1. 1. 2024", "High", "task" + id.toString());
-    id++;
+    // setup task
     const currentProject = document.querySelector(".selected").textContent;
     projects[currentProject].tasks[task.title] = task;
     addTaskD(task, currentProject);
     setupTaskD(task, currentProject);
 
 
-
-
-    //form.style.visibility = "hidden";
+    // save to local when you add task or project
+    localStorage.setItem('projects', JSON.stringify(projects));
 });
 
-let projectID = 1;
+function resetForm() {
+    const form = document.querySelector("form");
+    document.getElementById("title").value = "";
+    document.getElementById("description").value = "";
+    document.getElementById("dueDate").value = "";
+    document.getElementById("priority").value = "";
+    form.style.visibility = "hidden";
+}
+
+const rbutton = document.querySelector(".red");
+rbutton.addEventListener('click', () => {
+    resetForm();
+});
+
+function getTask() {
+    const title = document.getElementById("title").value;
+    const description = document.getElementById("description").value;
+    const dueDate = document.getElementById("dueDate").value;
+    const priority = document.getElementById("priority").value;
+
+    const task = todo(title, description, dueDate, priority, "task" +
+        id.toString());
+    id++;
+    return task;
+}
+
+let projectID = Object.keys(projects).length;
 const addProject = document.querySelector("#addProject");
 addProject.addEventListener('click', () => {
     const title = prompt("Title name");
@@ -39,8 +62,7 @@ addProject.addEventListener('click', () => {
     } else {
         const project = projectFactory(title, "21. 11. 2030",
             "High", "Pr" + projectID.toString());
-
-        projects[project.title] = {};
+        projects[project.title] = project; 
         projects[project.title].tasks = {};
         projects[project.title].id = project.id;
         projectID++;
@@ -48,6 +70,9 @@ addProject.addEventListener('click', () => {
         addProjectD(project, project.id);
         addProjectListener(project.id);
     }
+
+    // save to local when you add task or project
+    localStorage.setItem('projects', JSON.stringify(projects));
 });
 
 // add ID to each project and then 
@@ -74,3 +99,5 @@ left.addEventListener('click', () => {
 right.addEventListener('click', () => {
     input.stepUp();
 });
+
+export { addProjectListener }
