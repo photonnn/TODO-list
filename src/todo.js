@@ -26,13 +26,6 @@ function storageAvailable(type) {
 const projects = {
     HOME: {
         tasks: {
-            // example
-            //title: {
-            //  title: "Default",
-            // description: "Default",
-            // dueDate: "1. 1. 2023",
-            // priority: "High",
-            //}
         },
         id: "Pr0",
     },
@@ -41,8 +34,6 @@ const projects = {
 if (storageAvailable) {
     var retrievedObject = localStorage.getItem('projects');
     retrievedObject = JSON.parse(retrievedObject);
-    console.log("LOADING STORAGE");
-    console.log(retrievedObject);
     for (let em in retrievedObject) {
         projects[em] = retrievedObject[em];
     }
@@ -54,8 +45,10 @@ const todo = (title, description, dueDate, priority, id) => {
     return { title, description, dueDate, priority, id };
 };
 
-function eraseTask(project, task) {
+function deleteTask(project, task) {
     delete projects[project].tasks[task.title];
+    // we are actually deleting, not just erasing from screen!!!
+    localStorage.setItem('projects', JSON.stringify(projects));
 }
 
 const projectFactory = (title, dueDate, priority, id) => {
@@ -63,4 +56,4 @@ const projectFactory = (title, dueDate, priority, id) => {
 };
 
 // temp
-export { projects, todo, eraseTask, projectFactory }
+export { projects, todo, deleteTask, projectFactory }

@@ -22,15 +22,18 @@ loadFromStorage();
 
 
     - Add a form for user input -/-
-    - Style changes: Redo task squares
-    - Task description/edit system
-    - make priorites matter, border color
+    - Task changes:
+            1) Style changes: Redo task squares
+            2) Task description/edit system
+            3) Make priorites matter, border color
     - FIX remove button, namely when you don't input anything in the form
         multiple tasks are made event though there is only one saved in the 
         object. it shows correctly after refresh
     - FIX: prevent from changing projects when the form is opened,
         consider adding a cover just like in the library project
+    - FIX: project/shortcut name letters going to new line, instead only words
     - Add Local storage -/-
+    - Add a confirmation form when attempting to delete a project
 */
 
 

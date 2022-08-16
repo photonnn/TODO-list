@@ -8,32 +8,41 @@ let id = 1;
 const addTask = document.querySelector("#addTask");
 addTask.addEventListener('click', () => {
     const form = document.querySelector("form");
+    const cover = document.querySelector(".cover");
+    cover.style.display = "block";
     form.style.visibility = "visible";
 });
 
 const gbutton = document.querySelector(".green");
 gbutton.addEventListener('click', () => {
     const task = getTask();
-    resetForm();
+    if (!task) {
+        alert("failure, you can't repeat a task title")
+    } else {
+        resetForm();
 
-    // setup task
-    const currentProject = document.querySelector(".selected").textContent;
-    projects[currentProject].tasks[task.title] = task;
-    addTaskD(task, currentProject);
-    setupTaskD(task, currentProject);
+        // setup task
+        const currentProject = document.querySelector(".selected").textContent;
+        projects[currentProject].tasks[task.title] = task;
+        addTaskD(task, currentProject);
+        setupTaskD(task, currentProject);
 
 
-    // save to local when you add task or project
-    localStorage.setItem('projects', JSON.stringify(projects));
+        // save to local when you add task or project
+        localStorage.setItem('projects', JSON.stringify(projects));
+    }
+    console.log(projects);
 });
 
 function resetForm() {
     const form = document.querySelector("form");
+    const cover = document.querySelector(".cover");
     document.getElementById("title").value = "";
     document.getElementById("description").value = "";
     document.getElementById("dueDate").value = "";
     document.getElementById("priority").value = "";
     form.style.visibility = "hidden";
+    cover.style.display = "none";
 }
 
 const rbutton = document.querySelector(".red");
@@ -43,14 +52,19 @@ rbutton.addEventListener('click', () => {
 
 function getTask() {
     const title = document.getElementById("title").value;
-    const description = document.getElementById("description").value;
-    const dueDate = document.getElementById("dueDate").value;
-    const priority = document.getElementById("priority").value;
+    const currentProject = document.querySelector(".selected").textContent;
+    if (!projects[currentProject].tasks[title]) {
+        const description = document.getElementById("description").value;
+        const dueDate = document.getElementById("dueDate").value;
+        const priority = document.getElementById("priority").value;
 
-    const task = todo(title, description, dueDate, priority, "task" +
-        id.toString());
-    id++;
-    return task;
+        const task = todo(title, description, dueDate, priority, "task" +
+            id.toString());
+        id++;
+        return task;
+    } else {
+        return 0;
+    }
 }
 
 let projectID = Object.keys(projects).length;
@@ -62,7 +76,7 @@ addProject.addEventListener('click', () => {
     } else {
         const project = projectFactory(title, "21. 11. 2030",
             "High", "Pr" + projectID.toString());
-        projects[project.title] = project; 
+        projects[project.title] = project;
         projects[project.title].tasks = {};
         projects[project.title].id = project.id;
         projectID++;

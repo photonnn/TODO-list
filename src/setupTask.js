@@ -1,5 +1,5 @@
 import { eraseTaskD } from './dom.js';
-import { eraseTask } from './todo.js';
+import { deleteTask, projects } from './todo.js';
 
 
 let working_task, working_project;
@@ -7,8 +7,8 @@ let working_task, working_project;
 
 // "Control" function
 const setupTaskD = (task, project) => {
-    working_task = task;
-    working_project = project;
+    working_task = task; // object
+    working_project = project; // name
     
     uI();
     setupDeleteButton();
@@ -42,10 +42,22 @@ const setupDeleteButton = () => {
     const taskNode = document.querySelector(`.${working_task.id}`);
     taskNode.appendChild(btn);
 
-    // maybe find a way to move
+    // find a way to move
+    // we need to obtain task object from the button itself
+    // this is done via matching btn class name which is equal to the id
+    // of the task that we are seeking in a projects object
     btn.addEventListener('click', () => {
-        eraseTask(working_project, working_task);
-        eraseTaskD(working_task.id);
+        const taskID = btn.parentNode.className;
+        const currentProject = document.querySelector(".selected").textContent;
+
+        let title;
+        for (let em in projects[currentProject].tasks) {
+            if (projects[currentProject].tasks[em].id == taskID) {
+                title = projects[currentProject].tasks[em].title;
+            }
+        }
+        deleteTask(currentProject, projects[currentProject].tasks[title]);
+        eraseTaskD(taskID);
     });
 };
 
