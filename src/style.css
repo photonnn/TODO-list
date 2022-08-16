@@ -198,7 +198,7 @@ body {
 }
 
 #projectForm {
-    width: 55vh;
+    width: 65vh;
     height: 55vh;
     left: calc(50% - 10vh);
     top: calc(50% - 30vh);
@@ -207,7 +207,7 @@ body {
 }
 
 #confirmationForm {
-    width: 50svh;
+    width: 50vh;
     height: 35vh;
     left: calc(50% - 10vh);
     top: calc(50% - 30vh);

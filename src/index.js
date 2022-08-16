@@ -35,7 +35,7 @@ loadFromStorage();
         -/- but can't fix long names, maybe find a way to add "-" at end when
         breaking
     - Add Local storage -/-
-    - Add a confirmation form when attempting to delete a project
+    - Add a confirmation form when attempting to delete a project -/-
 */
 
 
