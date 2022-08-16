@@ -7,7 +7,7 @@ let id = 1;
 // add a task to the currently selected project
 const addTask = document.querySelector("#addTask");
 addTask.addEventListener('click', () => {
-    const form = document.querySelector("form");
+    const form = document.querySelector("#taskForm");
     const cover = document.querySelector(".cover");
     cover.style.display = "block";
     form.style.visibility = "visible";
@@ -35,7 +35,7 @@ gbutton.addEventListener('click', () => {
 });
 
 function resetForm() {
-    const form = document.querySelector("form");
+    const form = document.querySelector("#taskForm");
     const cover = document.querySelector(".cover");
     document.getElementById("title").value = "";
     document.getElementById("description").value = "";
@@ -68,26 +68,51 @@ function getTask() {
 }
 
 let projectID = Object.keys(projects).length;
+function getProject() {
+    const title = document.getElementById("proj_title").value;
+    const dueDate = document.getElementById("proj_dueDate").value;
+    const proj = projectFactory(title, dueDate, "Pr" + projectID.toString());
+    projectID++;
+    return proj;
+}
+
 const addProject = document.querySelector("#addProject");
 addProject.addEventListener('click', () => {
-    const title = prompt("Title name");
-    if (projects[title]) {
-        alert("ERROR ALREADY EXISTS");
-    } else {
-        const project = projectFactory(title, "21. 11. 2030", 
-            "Pr" + projectID.toString());
-        projects[project.title] = project;
-        projects[project.title].tasks = {};
-        projects[project.title].id = project.id;
-        projectID++;
+    const projForm = document.querySelector("#projectForm")
+    projForm.style.visibility = "visible";
+    const cover = document.querySelector(".cover");
+    cover.style.display = "block";
+});
 
-        addProjectD(project, project.id);
-        addProjectListener(project.id);
-    }
+const proj_gbutton = document.querySelector(".proj_green");
+proj_gbutton.addEventListener('click', () => {
+    const project = getProject();
+    resetProjForm();
+    projects[project.title] = project;
+    projects[project.title].tasks = {};
+    projects[project.title].id = project.id;
+
+    addProjectD(project, project.id);
+    addProjectListener(project.id);
+
 
     // save to local when you add task or project
     localStorage.setItem('projects', JSON.stringify(projects));
 });
+
+const proj_rbutton = document.querySelector(".proj_red");
+proj_rbutton.addEventListener('click', () => {
+    resetProjForm();
+});
+
+function resetProjForm() {
+    const form = document.querySelector("#projectForm");
+    const cover = document.querySelector(".cover");
+    document.getElementById("proj_title").value = "";
+    document.getElementById("proj_dueDate").value = "";
+    form.style.visibility = "hidden";
+    cover.style.display = "none";
+}
 
 // add ID to each project and then 
 const addProjectListener = (id) => {
