@@ -70,10 +70,15 @@ function getTask() {
 let projectID = Object.keys(projects).length;
 function getProject() {
     const title = document.getElementById("proj_title").value;
-    const dueDate = document.getElementById("proj_dueDate").value;
-    const proj = projectFactory(title, dueDate, "Pr" + projectID.toString());
-    projectID++;
-    return proj;
+    if (!projects[title]) {
+        const dueDate = document.getElementById("proj_dueDate").value;
+        const proj = projectFactory(title, dueDate, "Pr" + projectID.toString());
+        projectID++;
+        return proj;
+    } else {
+        return 0;
+    }
+
 }
 
 const addProject = document.querySelector("#addProject");
@@ -87,17 +92,21 @@ addProject.addEventListener('click', () => {
 const proj_gbutton = document.querySelector(".proj_green");
 proj_gbutton.addEventListener('click', () => {
     const project = getProject();
-    resetProjForm();
-    projects[project.title] = project;
-    projects[project.title].tasks = {};
-    projects[project.title].id = project.id;
+    if (!project) {
+        alert("Failure, can't repeat project name")
+    } else {
+        resetProjForm();
+        projects[project.title] = project;
+        projects[project.title].tasks = {};
+        projects[project.title].id = project.id;
 
-    addProjectD(project, project.id);
-    addProjectListener(project.id);
+        addProjectD(project, project.id);
+        addProjectListener(project.id);
 
 
-    // save to local when you add task or project
-    localStorage.setItem('projects', JSON.stringify(projects));
+        // save to local when you add task or project
+        localStorage.setItem('projects', JSON.stringify(projects));
+    }
 });
 
 const proj_rbutton = document.querySelector(".proj_red");
