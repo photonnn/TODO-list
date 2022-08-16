@@ -28,10 +28,12 @@ loadFromStorage();
             3) Make priorites matter, border color
     - FIX remove button, namely when you don't input anything in the form
         multiple tasks are made event though there is only one saved in the 
-        object. it shows correctly after refresh
+        object. it shows correctly after refresh -/-
     - FIX: prevent from changing projects when the form is opened,
-        consider adding a cover just like in the library project
+        consider adding a cover just like in the library project -/-
     - FIX: project/shortcut name letters going to new line, instead only words
+        -/- but can't fix long names, maybe find a way to add "-" at end when
+        breaking
     - Add Local storage -/-
     - Add a confirmation form when attempting to delete a project
 */

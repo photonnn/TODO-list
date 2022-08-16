@@ -74,8 +74,8 @@ addProject.addEventListener('click', () => {
     if (projects[title]) {
         alert("ERROR ALREADY EXISTS");
     } else {
-        const project = projectFactory(title, "21. 11. 2030",
-            "High", "Pr" + projectID.toString());
+        const project = projectFactory(title, "21. 11. 2030", 
+            "Pr" + projectID.toString());
         projects[project.title] = project;
         projects[project.title].tasks = {};
         projects[project.title].id = project.id;

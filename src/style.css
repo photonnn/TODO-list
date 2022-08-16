@@ -86,7 +86,7 @@ body {
     background-color: rgb(153, 252, 219);
     padding: 5%;
     border-bottom: 3px solid gray;
-    word-break: break-all;
+    word-break: break-word;
     user-select: none;
     cursor: pointer;
     display: flex;
