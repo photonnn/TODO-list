@@ -28,10 +28,17 @@ function addRPB() {
         delBtn.textContent = "X";
         delBtn.classList.add("RPB");
         delBtn.addEventListener('click', () => {
-            onClickingRPB()
+            showConfirmationForm();
         });
         header.appendChild(delBtn);
     }
+}
+
+function showConfirmationForm() {
+    const form = document.querySelector("#confirmationForm");
+    form.style.visibility = "visible";
+    const cover = document.querySelector(".cover");
+    cover.style.display = "block";
 }
 
 function removeRPB() {
@@ -40,7 +47,7 @@ function removeRPB() {
 }
 
 function onClickingRPB() {
-    console.log("WHAT IS GOING ON D:");
+    // first check if you actually want to delete
     // get id, delect content and then sidebar using id. return to home
     const projectName2 = document.querySelector(".selected").textContent;
     const projectID = projects[projectName2].id;
@@ -73,4 +80,4 @@ const loadFromStorage = () => {
     }
 };
 
-export { changeProjectD, loadFromStorage };
+export { changeProjectD, loadFromStorage, onClickingRPB };

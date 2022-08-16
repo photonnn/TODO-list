@@ -206,7 +206,16 @@ body {
     font-size: 3vh;
 }
 
-#projectForm, #taskForm {
+#confirmationForm {
+    width: 50svh;
+    height: 35vh;
+    left: calc(50% - 10vh);
+    top: calc(50% - 30vh);
+    padding: 0 3% 0 3%;
+    font-size: 3vh;
+}
+
+#projectForm, #taskForm, #confirmationForm {
     visibility: hidden;
     position: absolute;
     z-index: 2;
@@ -254,15 +263,15 @@ body {
     max-width: 30vh;
 }
 
-.red, .proj_red {
+.redBtn {
     background-color: red;
 }
 
-.green, .proj_green {
+.greenBtn {
     background-color: rgb(47, 255, 47);
 }
 
-.red, .green, .proj_red, .proj_green {
+.redBtn, .greenBtn {
     font-size: 3vh;
     padding: 10%;
     width: 15vh;

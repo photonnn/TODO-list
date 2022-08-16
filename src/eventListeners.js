@@ -1,6 +1,6 @@
 import { projectFactory, projects, todo } from './todo.js';
 import { addProjectD, addTaskD } from './dom.js';
-import { changeProjectD } from './control.js';
+import { changeProjectD, onClickingRPB } from './control.js';
 import { setupTaskD } from './setupTask.js';
 
 let id = 1;
@@ -122,6 +122,27 @@ function resetProjForm() {
     form.style.visibility = "hidden";
     cover.style.display = "none";
 }
+
+const conf_green = document.querySelector(".conf_green");
+conf_green.addEventListener('click', () => {
+    onClickingRPB();
+    resetConfForm();
+});
+
+const conf_red = document.querySelector(".conf_red");
+conf_red.addEventListener('click', () => {
+    resetConfForm();
+})
+
+function resetConfForm() {
+    const confForm = document.querySelector("#confirmationForm");
+    confForm.style.visibility = "hidden";
+    const cover = document.querySelector(".cover");
+    cover.style.display = "none";
+}
+
+
+
 
 // add ID to each project and then 
 const addProjectListener = (id) => {
