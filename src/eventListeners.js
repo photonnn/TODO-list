@@ -2,9 +2,11 @@ import { projectFactory, projects, todo } from './todo.js';
 import { addProjectD, addTaskD } from './dom.js';
 import { changeProjectD, onClickingRPB } from './control.js';
 import { setupTaskD } from './setupTask.js';
+import { getDate, formatDate } from './date.js';
 
-let id = 1;
-// add a task to the currently selected project
+// it resets every time website refreshes so duplication bug occurs,
+// and it's more efficient, (little bit lol)
+
 const addTask = document.querySelector("#addTask");
 addTask.addEventListener('click', () => {
     const form = document.querySelector("#taskForm");
@@ -13,6 +15,7 @@ addTask.addEventListener('click', () => {
     form.style.visibility = "visible";
 });
 
+// thought it would easy to put all form related code to the submit btn listener
 const gbutton = document.querySelector(".green");
 gbutton.addEventListener('click', () => {
     const task = getTask();
@@ -21,13 +24,17 @@ gbutton.addEventListener('click', () => {
     } else {
         resetForm();
 
+        // set default date, so MM-DD-YYYY is not shown on form
+        const dueDate = document.getElementById("dueDate");
+        dueDate.value = getDate();
+
         // setup task
         const currentProject = document.querySelector(".selected").textContent;
         projects[currentProject].tasks[task.title] = task;
         addTaskD(task, currentProject);
         setupTaskD(task, currentProject);
 
-
+        
         // save to local when you add task or project
         localStorage.setItem('projects', JSON.stringify(projects));
     }
@@ -37,10 +44,7 @@ gbutton.addEventListener('click', () => {
 function resetForm() {
     const form = document.querySelector("#taskForm");
     const cover = document.querySelector(".cover");
-    document.getElementById("title").value = "";
-    document.getElementById("description").value = "";
-    document.getElementById("dueDate").value = "";
-    document.getElementById("priority").value = "";
+    form.reset();
     form.style.visibility = "hidden";
     cover.style.display = "none";
 }
@@ -50,24 +54,33 @@ rbutton.addEventListener('click', () => {
     resetForm();
 });
 
+// couldn't get submit type button to work, so needed a function to get values
+// from the form, this is it
 function getTask() {
     const title = document.getElementById("title").value;
     const currentProject = document.querySelector(".selected").textContent;
     if (!projects[currentProject].tasks[title]) {
         const description = document.getElementById("description").value;
-        const dueDate = document.getElementById("dueDate").value;
+        let dueDate = document.getElementById("dueDate").value;
         const priority = document.getElementById("priority").value;
 
-        const task = todo(title, description, dueDate, priority, "task" +
+        if (!dueDate) {
+            dueDate = getDate();
+        }
+
+        const id = Object.keys(projects[currentProject].tasks).length + 1;
+        const task = todo(title, description, formatDate(dueDate), priority, "task" +
             id.toString());
-        id++;
         return task;
     } else {
         return 0;
     }
 }
 
+// similar problem as task id
 let projectID = Object.keys(projects).length;
+
+// againt, needed a way to get values from the form
 function getProject() {
     const title = document.getElementById("proj_title").value;
     if (!projects[title]) {

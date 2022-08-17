@@ -37,7 +37,7 @@
         <div>
             <label for="description">Description:</label>
             <textarea name="description" id="description" cols="30" rows="10"
-                required></textarea>
+                required maxlength="110"></textarea>
         </div>
         <div>
             <label for="dueDate">Due Date:</label>
@@ -46,7 +46,7 @@
         <div>
             <label for="priority">Priority:</label>
             <select id="priority" name="priority">
-                <option value="Must">Must</option>
+                <option value="Must" selected="selected">Must</option>
                 <option value="Necessary">Necessary</option>
                 <option value="Ignorable">Ignorable</option>
                 <option value="Maybe">Maybe</option>

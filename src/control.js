@@ -4,7 +4,8 @@ import { projects } from './todo.js';
 import { addProjectListener } from './eventListeners.js';
 
 
-// erase and add proper tasks when switching project
+// felt like this deserves a seperate module, since it's not really DOM manip.
+// as the name suggests, controling the flow here
 const changeProjectD = (projectName) => {
     eraseTasksD();
     if (projects[projectName].tasks != {}) {
@@ -48,7 +49,7 @@ function removeRPB() {
 
 function onClickingRPB() {
     // first check if you actually want to delete
-    // get id, delect content and then sidebar using id. return to home
+    // get id, delete on content and then sidebar using id. return to home
     const projectName2 = document.querySelector(".selected").textContent;
     const projectID = projects[projectName2].id;
     delete projects[projectName2];

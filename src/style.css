@@ -2,6 +2,12 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    --neutral: #f5f5f5;
+    --violet: white;
+    --stone: #6e6279;
+    --zinc: #3f3f46;
+    --hover: rgb(69, 31, 83);
+
 }
 
 body {
@@ -12,7 +18,7 @@ body {
 
 #sidebar {
     flex: 1;
-    background-color: aquamarine;
+    background-color: var(--zinc);
     display: flex;
     flex-direction: column;
 }
@@ -28,6 +34,7 @@ body {
 .home {
     flex: 1;
     border-bottom: 5px black solid;
+    background-color: var(--stone);
     user-select: none;
 }
 
@@ -36,13 +43,13 @@ body {
 }
 
 .home:hover {
-    background-color: rgb(85, 253, 197);
+    background-color: var(--hover);
     cursor: pointer;
 }
 
 #content {
     flex: 3;
-    background-color: crimson;
+    background-color: grey;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -68,13 +75,13 @@ body {
 
 #addProject {
     border-top: 3px solid black;
-    background-color: rgb(153, 252, 219);
+    background-color: var(--stone);
     user-select: none;
 }
 
 #addProject:hover {
     cursor: pointer;
-    background-color: rgb(85, 253, 197)
+    background-color: var(--hover);
 }
 
 .expand>div:first-child {
@@ -83,9 +90,9 @@ body {
 
 
 .expand .shortcut {
-    background-color: rgb(153, 252, 219);
+    background-color: var(--stone);
     padding: 5%;
-    border-bottom: 3px solid gray;
+    border-bottom: 3px solid black;
     word-break: break-word;
     user-select: none;
     cursor: pointer;
@@ -99,7 +106,7 @@ body {
 }
 
 .shortcut:hover {
-    background-color: rgb(85, 253, 197);
+    background-color: var(--hover);
     cursor: pointer;
 }
 
@@ -118,13 +125,39 @@ body {
     padding: 3%;
 }
 
-#tasks div {
+#tasks>div {
     height: 300px;
-    background-color: rgba(190, 34, 34, 0.795);
+    background: rgb(0, 147, 223);
+    background: radial-gradient(circle, rgba(0, 147, 223, 1) 0%,
+            rgba(211, 239, 242, 1) 49%, rgba(17, 16, 16, 1) 100%);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    border-radius: 10%;
+    font-size: 2rem;
+}
+
+#tasks > div > div {
+    word-break: break-word;
+}
+
+.Must {
+    background: rgb(232, 5, 5);
+    background: radial-gradient(circle, rgba(232, 5, 5, 1) 0%,
+            rgba(213, 144, 144, 1) 49%, rgba(17, 16, 16, 1) 100%) !important;
+}
+
+.Necessary {
+    background: rgb(232, 107, 5);
+    background: radial-gradient(circle, rgba(232, 107, 5, 1) 0%,
+            rgba(235, 200, 163, 1) 49%, rgba(17, 16, 16, 1) 100%) !important;
+}
+
+.Maybe {
+    background: rgb(193, 232, 5);
+    background: radial-gradient(circle, rgba(193, 232, 5, 1) 0%, 
+        rgba(224, 235, 163, 1) 49%, rgba(17, 16, 16, 1) 100%) !important;
 }
 
 #content>*:not(#tasks) {
@@ -163,14 +196,14 @@ body {
 }
 
 .selected {
-    border-right: 10px groove crimson;
+    border-right: 10px groove var(--hover);
 }
 
 #date {
     width: 40vh !important;
     font-size: 5vh;
     border: none;
-    background-color: crimson;
+    background: grey;
 }
 
 .calLeft {
@@ -215,16 +248,18 @@ body {
     font-size: 3vh;
 }
 
-#projectForm, #taskForm, #confirmationForm {
+#projectForm,
+#taskForm,
+#confirmationForm {
     visibility: hidden;
     position: absolute;
     z-index: 2;
-    background-color: rgb(220, 20, 60);
+    background-color: var(--stone);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
-    border: 5px rgba(190, 34, 34, 0.795) solid;
+    border: 5px var(--hover) solid;
 }
 
 .cover {
@@ -238,22 +273,26 @@ body {
     display: none;
 }
 
-#taskForm div, #projectForm div {
+#taskForm div,
+#projectForm div {
     display: flex;
 }
 
-#taskForm label, #projectForm label {
+#taskForm label,
+#projectForm label {
     flex: 1;
     min-width: 20vh;
     font-size: 3vh;
 }
 
-#taskForm  input, #taskForm select {
+#taskForm input,
+#taskForm select {
     flex: 6;
     min-width: 30vh;
 }
 
-#description, #taskForm input {
+#description,
+#taskForm input {
     padding: 1%;
     font-size: 2vh;
 }
@@ -271,7 +310,8 @@ body {
     background-color: rgb(47, 255, 47);
 }
 
-.redBtn, .greenBtn {
+.redBtn,
+.greenBtn {
     font-size: 3vh;
     padding: 10%;
     width: 15vh;

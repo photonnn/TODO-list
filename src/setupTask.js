@@ -31,7 +31,9 @@ const uI = () => {
 
     const priority = document.createElement("div");
     priority.textContent = "Priority: " + working_task.priority;
-    taskNode.appendChild(priority);
+   // taskNode.appendChild(priority);
+
+    taskNode.classList.add(`${working_task.priority}`)
 };
 
 
@@ -42,12 +44,13 @@ const setupDeleteButton = () => {
     const taskNode = document.querySelector(`.${working_task.id}`);
     taskNode.appendChild(btn);
 
-    // find a way to move
     // we need to obtain task object from the button itself
+    // because if we use any variable it won't delete properly
     // this is done via matching btn class name which is equal to the id
     // of the task that we are seeking in a projects object
     btn.addEventListener('click', () => {
-        const taskID = btn.parentNode.className;
+        const taskID = [...btn.parentNode.classList][0];
+        console.log(taskID);
         const currentProject = document.querySelector(".selected").textContent;
 
         let title;

@@ -23,9 +23,9 @@ loadFromStorage();
 
     - Add a form for user input -/-
     - Task changes:
-            1) Style changes: Redo task squares
+            1) Style changes: Redo task squares -/-, maybe not enough
             2) Task description/edit system
-            3) Make priorites matter, border color
+            3) Make priorites matter, border color -/-
     - FIX remove button, namely when you don't input anything in the form
         multiple tasks are made event though there is only one saved in the 
         object. it shows correctly after refresh -/-
@@ -36,6 +36,10 @@ loadFromStorage();
         breaking
     - Add Local storage -/-
     - Add a confirmation form when attempting to delete a project -/-
+    - Add media queries
+    - change projectId and id to calculate id based on what is the biggest id
+        present on the current project/projects and then add 1, this way
+        it is not based on length and dupe bugs do not appear
 */
 
 

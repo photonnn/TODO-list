@@ -46,6 +46,7 @@ const todo = (title, description, dueDate, priority, id) => {
 };
 
 function deleteTask(project, task) {
+    console.log(project);
     delete projects[project].tasks[task.title];
     // we are actually deleting, not just erasing from screen!!!
     localStorage.setItem('projects', JSON.stringify(projects));
