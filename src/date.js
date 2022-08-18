@@ -3,11 +3,14 @@ import { projects } from "./todo";
 const calender = document.querySelector("#date");
 
 const today = getDate();
-const dueDate = document.getElementById("dueDate");
-dueDate.value = getDate();
 calender.setAttribute("value", today);
 calender.setAttribute("min", today);
 
+// set default date values to today
+const dueDate = document.getElementById("dueDate");
+dueDate.value = getDate();
+const proj_dueDate = document.getElementById("proj_dueDate");
+proj_dueDate.value = getDate();
 
 function getDate() {
     var d = new Date(),

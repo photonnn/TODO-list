@@ -165,6 +165,10 @@ function resetProjForm() {
     document.getElementById("proj_dueDate").value = "";
     form.style.visibility = "hidden";
     cover.style.display = "none";
+
+    // this is also default, present in date.js!
+    const dueDate = document.getElementById("proj_dueDate");
+    dueDate.value = getDate();
 }
 
 const conf_green = document.querySelector(".conf_green");
