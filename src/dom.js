@@ -1,9 +1,17 @@
+import { expireCheck } from "./date";
+
 const addTaskD = (task) => {
     const div = document.createElement("div");
     div.classList.add(`${task.id}`);
+    
+    if (expireCheck(task)) {
+        div.classList.add("expired");
+    } 
 
     const tasks = document.querySelector("#tasks");
     tasks.appendChild(div);
+
+
 };
 
 const eraseTasksD = () => {

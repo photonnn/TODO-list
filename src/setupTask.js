@@ -26,11 +26,9 @@ const uI = () => {
     taskNode.appendChild(desc);
 
     const dueDate = document.createElement("div");
-    dueDate.textContent = "Due date: "  + working_task.dueDate;
+    dueDate.textContent = "Due Date: "  + working_task.dueDate;
     taskNode.appendChild(dueDate);
 
-    const priority = document.createElement("div");
-    priority.textContent = "Priority: " + working_task.priority;
    // taskNode.appendChild(priority);
 
     taskNode.classList.add(`${working_task.priority}`)

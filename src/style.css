@@ -118,7 +118,7 @@ body {
 #tasks {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fit, 45vh);
+    grid-template-columns: repeat(auto-fit, minmax(45vh, 1fr));
     grid-gap: 2vh;
     overflow-y: auto;
     width: 100%;
@@ -325,4 +325,8 @@ body {
     display: flex;
     justify-content: space-between;
     width: 100%;
+}
+
+.expired {
+    border: 5px solid red;
 }

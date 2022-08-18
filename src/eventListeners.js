@@ -2,7 +2,7 @@ import { projectFactory, projects, todo } from './todo.js';
 import { addProjectD, addTaskD } from './dom.js';
 import { changeProjectD, onClickingRPB } from './control.js';
 import { setupTaskD } from './setupTask.js';
-import { getDate, formatDate } from './date.js';
+import { getDate, formatDate, expireCheck } from './date.js';
 
 // it resets every time website refreshes so duplication bug occurs,
 // and it's more efficient, (little bit lol)
@@ -188,15 +188,35 @@ const addProjectListener = (id) => {
 
 addProjectListener("Pr0");
 
-// navigate calender
+// navigate calender, left and right arrow
 const left = document.querySelector('.calLeft');
 const right = document.querySelector('.calRight');
 const input = document.querySelector('#date');
 left.addEventListener('click', () => {
     input.stepDown();
+    check();
 });
 right.addEventListener('click', () => {
     input.stepUp();
+    check();
 });
+// date is picked manually from the calander, click doesn't work
+input.addEventListener('change', () => {
+    check();
+})
+
+function check() {
+    const currentProject = document.querySelector(".selected").textContent;
+    for (let em in projects[currentProject].tasks) {
+        const div = document.querySelector(`.${
+            projects[currentProject].tasks[em].id
+        }`);
+        if (expireCheck(projects[currentProject].tasks[em])) {
+            div.classList.add("expired");
+        } else {
+            div.classList.remove("expired");
+        }
+    }
+}
 
 export { addProjectListener }
