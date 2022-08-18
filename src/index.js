@@ -23,7 +23,7 @@ loadFromStorage();
 
     - Add a form for user input -/-
     - Task changes:
-            1) Style changes: Redo task squares -/-, maybe not enough
+            1) Style changes: Redo task squares -/-, maybe not
             2) Task description/edit system
             3) Make priorites matter, border color -/-
     - FIX remove button, namely when you don't input anything in the form

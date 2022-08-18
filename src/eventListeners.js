@@ -34,7 +34,7 @@ gbutton.addEventListener('click', () => {
         addTaskD(task, currentProject);
         setupTaskD(task, currentProject);
 
-        
+
         // save to local when you add task or project
         localStorage.setItem('projects', JSON.stringify(projects));
     }
@@ -68,7 +68,17 @@ function getTask() {
             dueDate = getDate();
         }
 
-        const id = Object.keys(projects[currentProject].tasks).length + 1;
+        let id = 0;
+        // easiest way to prevent duplication bug => 2 tasks 1 id
+        for (let em in projects[currentProject].tasks) {
+            id = Math.max(id,
+                Number(projects[currentProject].tasks[em].id
+                    .replace("task", "")) + 1);
+        }
+
+
+
+
         const task = todo(title, description, formatDate(dueDate), priority, "task" +
             id.toString());
         return task;
@@ -78,15 +88,22 @@ function getTask() {
 }
 
 // similar problem as task id
-let projectID = Object.keys(projects).length;
+//let projectID = Object.keys(projects).length;
 
 // againt, needed a way to get values from the form
 function getProject() {
     const title = document.getElementById("proj_title").value;
     if (!projects[title]) {
         const dueDate = document.getElementById("proj_dueDate").value;
+
+        let projectID = 0;
+        // easiest way to prevent duplication bug => 2 projects 1 id
+        for (let em in projects) {
+            projectID = Math.max(projectID, 
+                Number(projects[em].id.replace("Pr", "")) + 1);
+        }
+
         const proj = projectFactory(title, dueDate, "Pr" + projectID.toString());
-        projectID++;
         return proj;
     } else {
         return 0;
