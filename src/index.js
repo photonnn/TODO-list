@@ -48,7 +48,14 @@ loadFromStorage();
     - TextArea expanding D: -///-
     - consider more cols and row for TextArea -///-
     - Rethink the need for dueDate in project, I think not needed!! -///-
-    - Prevent from inputting non alphabet characters in input
+    - prevent title name duplication on adding task, the form goes away for some
+        reason -///-
+    - ghost task appearing: bug -///-
+    - make red button recover the task, you have all the data needed in the form
+    - add keybinds, especially enter instead of mouse click
+    - CLEAN CODE!!!!! you know currentProject repeat all the time and other jazz
+    - experiment with working_task, try to remove
+    - rework modules, maybe no need to generalize everything, experiment
 */
 
 

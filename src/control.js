@@ -44,7 +44,9 @@ function showConfirmationForm() {
 
 function removeRPB() {
     const header = document.querySelector(".header");
-    header.lastChild.remove();
+    const rpb = document.querySelector(".RPB");
+    if (rpb)
+    header.removeChild(rpb);
 }
 
 function onClickingRPB() {

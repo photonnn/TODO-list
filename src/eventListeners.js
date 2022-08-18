@@ -26,11 +26,13 @@ const gbutton = document.querySelector(".green");
 gbutton.addEventListener('click', () => {
     // run only if not editing, we have 2 event listners on one button
     // so this forces the other one to work alone, which is what we want
-    const currentProject = document.querySelector(".selected").textContent;
-    if (!projects[currentProject].flag) {
-        console.log("I RAN");
 
-        const task = getTask();
+    const currentProject = document.querySelector(".selected").textContent;
+    // bugs occur if flag isn't present, since after I am using two
+    // event listners for one button
+    const task = getTask();
+    if (task) {
+
 
         resetForm();
 
@@ -39,16 +41,15 @@ gbutton.addEventListener('click', () => {
         dueDate.value = getDate();
 
         // setup task
-        const currentProject = document.querySelector(".selected").textContent;
         projects[currentProject].tasks[task.title] = task;
         addTaskD(task, currentProject);
-        setupTaskD(task, currentProject);
+        setupTaskD(task);
 
 
         // save to local when you add task or project
         localStorage.setItem('projects', JSON.stringify(projects));
+        console.log(projects);
     }
-    console.log(projects);
 });
 
 function resetForm() {
@@ -168,7 +169,7 @@ function resetProjForm() {
 
     // this is also default, present in date.js!
     //const dueDate = document.getElementById("proj_dueDate");
-   // dueDate.value = getDate();
+    // dueDate.value = getDate();
 }
 
 const conf_green = document.querySelector(".conf_green");

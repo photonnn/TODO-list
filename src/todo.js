@@ -27,8 +27,7 @@ const projects = {
     HOME: {
         tasks: {
         },
-        id: "Pr0",
-        flag: false,
+        id: "Pr0"
     },
 };
 

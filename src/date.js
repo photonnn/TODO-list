@@ -52,8 +52,6 @@ const expireCheck = (task) => {
     // console.log(document.getElementById("date").valueAsDate);
     // ex: Wed Sep 28 2022 02:00:00 GMT+0200 (Central European Summer Time)
     const currentProject = document.querySelector(".selected").textContent;
-    console.log(projects);
-    console.log(task);
     const arr = projects[currentProject].tasks[task.title].dueDate.split("-");
     if (+todayArr[0] > +arr[1] || +todayArr[1] > +arr[0] || +todayArr[2] >
         +arr[2]) {
