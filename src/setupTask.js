@@ -111,6 +111,9 @@ function setupEditForm(task) {
         if (projects[currentProject].flag) {
             const temp = task.title;
             task.title = document.getElementById("title").value;
+            task.description = document.getElementById("description").value;
+
+            task.priority = document.getElementById("priority").value;
 
             // name of the object and the title are the same, this is why
             // if you edit the title name, the function can no longer find the
@@ -121,10 +124,6 @@ function setupEditForm(task) {
                     JSON.parse(JSON.stringify(projects[currentProject].tasks[temp]));
                 delete projects[currentProject].tasks[temp];
             }
-            task.description = document.getElementById("description").value;
-
-            task.priority = document.getElementById("priority").value;
-            //task.dueDate = document.getElementById("dueDate").value;
 
             resetForm();
             projects[currentProject].flag = false;
