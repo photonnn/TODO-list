@@ -9,22 +9,32 @@ import { getDate, formatDate, expireCheck } from './date.js';
 
 const addTask = document.querySelector("#addTask");
 addTask.addEventListener('click', () => {
+    showFormAndCover();
+});
+
+
+// make it apply to any form TODOODODODODOD
+function showFormAndCover() {
     const form = document.querySelector("#taskForm");
     const cover = document.querySelector(".cover");
     cover.style.display = "block";
     form.style.visibility = "visible";
-});
+}
 
 // thought it would easy to put all form related code to the submit btn listener
 const gbutton = document.querySelector(".green");
 gbutton.addEventListener('click', () => {
-    const task = getTask();
-    if (!task) {
-        alert("failure, you can't repeat a task title")
-    } else {
+    // run only if not editing, we have 2 event listners on one button
+    // so this forces the other one to work alone, which is what we want
+    const currentProject = document.querySelector(".selected").textContent;
+    if (!projects[currentProject].flag) {
+        console.log("I RAN");
+
+        const task = getTask();
+
         resetForm();
 
-        // set default date, so MM-DD-YYYY is not shown on form
+        // set default date, so MM-DD-YYYY is not shown on form?????
         const dueDate = document.getElementById("dueDate");
         dueDate.value = getDate();
 
@@ -47,6 +57,10 @@ function resetForm() {
     form.reset();
     form.style.visibility = "hidden";
     cover.style.display = "none";
+
+    // this is also default, present in date.js!
+    const dueDate = document.getElementById("dueDate");
+    dueDate.value = getDate();
 }
 
 const rbutton = document.querySelector(".red");
@@ -83,7 +97,7 @@ function getTask() {
             id.toString());
         return task;
     } else {
-        return 0;
+        alert("Failure, task with the same title already exists")
     }
 }
 
@@ -99,7 +113,7 @@ function getProject() {
         let projectID = 0;
         // easiest way to prevent duplication bug => 2 projects 1 id
         for (let em in projects) {
-            projectID = Math.max(projectID, 
+            projectID = Math.max(projectID,
                 Number(projects[em].id.replace("Pr", "")) + 1);
         }
 
@@ -208,9 +222,8 @@ input.addEventListener('change', () => {
 function check() {
     const currentProject = document.querySelector(".selected").textContent;
     for (let em in projects[currentProject].tasks) {
-        const div = document.querySelector(`.${
-            projects[currentProject].tasks[em].id
-        }`);
+        const div = document.querySelector(`.${projects[currentProject].tasks[em].id
+            }`);
         if (expireCheck(projects[currentProject].tasks[em])) {
             div.classList.add("expired");
         } else {
@@ -219,4 +232,4 @@ function check() {
     }
 }
 
-export { addProjectListener }
+export { addProjectListener, showFormAndCover, resetForm }

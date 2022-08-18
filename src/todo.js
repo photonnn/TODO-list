@@ -28,6 +28,7 @@ const projects = {
         tasks: {
         },
         id: "Pr0",
+        flag: false,
     },
 };
 

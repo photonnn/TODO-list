@@ -10,10 +10,14 @@
 
 }
 
+body,
+html {
+    height: 100%;
+    width: 100%;
+}
+
 body {
-    background-color: blanchedalmond;
     display: flex;
-    height: 100vh;
 }
 
 #sidebar {
@@ -21,6 +25,8 @@ body {
     background-color: var(--zinc);
     display: flex;
     flex-direction: column;
+    height: 100%;
+    width: 100%;
 }
 
 #sidebar>div {
@@ -54,6 +60,8 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
+    height: 100%;
+    width: 100%;
 }
 
 .expand {
@@ -118,7 +126,7 @@ body {
 #tasks {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(45vh, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(35vh, 1fr));
     grid-gap: 2vh;
     overflow-y: auto;
     width: 100%;
@@ -126,7 +134,7 @@ body {
 }
 
 #tasks>div {
-    height: 300px;
+    height: 35vh;
     background: rgb(0, 147, 223);
     background: radial-gradient(circle, rgba(0, 147, 223, 1) 0%,
             rgba(211, 239, 242, 1) 49%, rgba(17, 16, 16, 1) 100%);
@@ -135,10 +143,10 @@ body {
     justify-content: space-around;
     align-items: center;
     border-radius: 10%;
-    font-size: 2rem;
+    font-size: clamp(0, 2rem, calc(2rem + 2.5vh));
 }
 
-#tasks > div > div {
+#tasks>div>div {
     word-break: break-word;
 }
 
@@ -156,8 +164,8 @@ body {
 
 .Maybe {
     background: rgb(193, 232, 5);
-    background: radial-gradient(circle, rgba(193, 232, 5, 1) 0%, 
-        rgba(224, 235, 163, 1) 49%, rgba(17, 16, 16, 1) 100%) !important;
+    background: radial-gradient(circle, rgba(193, 232, 5, 1) 0%,
+            rgba(224, 235, 163, 1) 49%, rgba(17, 16, 16, 1) 100%) !important;
 }
 
 #content>*:not(#tasks) {
@@ -292,9 +300,12 @@ body {
 }
 
 #description,
-#taskForm input {
-    padding: 1%;
+#taskForm input,
+#priority,
+#proj_title,
+#proj_dueDate {
     font-size: 2vh;
+    padding: 1%;
 }
 
 #description {
@@ -329,4 +340,34 @@ body {
 
 .expired {
     border: 5px solid red;
+}
+
+.task_desc {
+    overflow-y: auto;
+    flex: 6;
+    font-size: 1.5rem;
+}
+
+.task_dueDate {
+    flex: 1;
+}
+
+.task_title, .task_desc, .task_dueDate {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.212);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.task_title {
+    flex: 1;
+    padding: 0 6%;
+}
+
+.taskButtons  > button {
+    font-size: 1.5rem;
+    color: white;
+    background-color: black;
+    opacity: 0.5;
 }

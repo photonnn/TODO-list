@@ -17,14 +17,14 @@ loadFromStorage();
             Idea:
             Always show all that can be shown. If it happens that one of them
             expired simply nedote so using red border or (expired) tag.
-            It can be shown if its start day is today or earlier.
+            It can be shown if its start day is today or earlier. -///-
 
 
 
     - Add a form for user input -///-
     - Task changes:
             1) Style changes: Redo task squares -///-, maybe not
-            2) Task description/edit system
+            2) Task description/edit system -///-
             3) Make priorites matter, border color -///-
     - FIX remove button, namely when you don't input anything in the form
         multiple tasks are made event though there is only one saved in the 
@@ -40,6 +40,11 @@ loadFromStorage();
     - change projectId and id to calculate id based on what is the biggest id
         present on the current project/projects and then add 1, this way
         it is not based on length and dupe bugs do not appear -///-
+    - Fix dates for editing!
+    - Do something with project dates, maybe content border to signify the late
+        project
+    - Make a refresh function, that reloads, maybe just changeProject so you
+        don't have to location.reload()
 */
 
 
