@@ -45,7 +45,7 @@ loadFromStorage();
         project
     - Make a refresh function, that reloads, maybe just changeProject so you
         don't have to location.reload()
-    - TextArea expanding D:
+    - TextArea expanding D: -///-
     - consider more cols and row for TextArea
 */
 
