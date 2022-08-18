@@ -53,8 +53,8 @@ function deleteTask(project, task) {
     localStorage.setItem('projects', JSON.stringify(projects));
 }
 
-const projectFactory = (title, dueDate, id) => {
-    return { title, dueDate, id };
+const projectFactory = (title/*, dueDate*/, id) => {
+    return { title/*, dueDate*/, id };
 };
 
 // temp

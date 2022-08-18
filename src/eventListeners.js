@@ -2,7 +2,7 @@ import { projectFactory, projects, todo } from './todo.js';
 import { addProjectD, addTaskD } from './dom.js';
 import { changeProjectD, onClickingRPB } from './control.js';
 import { setupTaskD } from './setupTask.js';
-import { getDate, formatDate, expireCheck } from './date.js';
+import { getDate, formatDate, expireCheck, proj_expireCheck } from './date.js';
 
 // it resets every time website refreshes so duplication bug occurs,
 // and it's more efficient, (little bit lol)
@@ -108,7 +108,7 @@ function getTask() {
 function getProject() {
     const title = document.getElementById("proj_title").value;
     if (!projects[title]) {
-        const dueDate = document.getElementById("proj_dueDate").value;
+        //const dueDate = document.getElementById("proj_dueDate").value;
 
         let projectID = 0;
         // easiest way to prevent duplication bug => 2 projects 1 id
@@ -117,7 +117,7 @@ function getProject() {
                 Number(projects[em].id.replace("Pr", "")) + 1);
         }
 
-        const proj = projectFactory(title, dueDate, "Pr" + projectID.toString());
+        const proj = projectFactory(title, /*dueDate,*/ "Pr" + projectID.toString());
         return proj;
     } else {
         return 0;
@@ -162,13 +162,13 @@ function resetProjForm() {
     const form = document.querySelector("#projectForm");
     const cover = document.querySelector(".cover");
     document.getElementById("proj_title").value = "";
-    document.getElementById("proj_dueDate").value = "";
+    //document.getElementById("proj_dueDate").value = "";
     form.style.visibility = "hidden";
     cover.style.display = "none";
 
     // this is also default, present in date.js!
-    const dueDate = document.getElementById("proj_dueDate");
-    dueDate.value = getDate();
+    //const dueDate = document.getElementById("proj_dueDate");
+   // dueDate.value = getDate();
 }
 
 const conf_green = document.querySelector(".conf_green");
@@ -234,6 +234,15 @@ function check() {
             div.classList.remove("expired");
         }
     }
+    /*
+    const content = document.querySelector("#content");
+    if (proj_expireCheck()) {
+        content.style.borderTop = "1vh red solid";
+        content.style.borderLeft = "1vh red solid";
+    } else {
+        content.style.border = "none";
+    } */
 }
+
 
 export { addProjectListener, showFormAndCover, resetForm }

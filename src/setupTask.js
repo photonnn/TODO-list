@@ -2,6 +2,7 @@ import { eraseTaskD } from './dom.js';
 import { showFormAndCover, resetForm } from './eventListeners.js';
 import { deleteTask, projects } from './todo.js';
 import { formatDate } from './date.js'
+import { changeProjectD } from './control.js';
 
 let working_task, working_project;
 
@@ -101,7 +102,10 @@ function setupEditForm(task) {
     document.getElementById("description").value = task.description;
 
     // date doesn't work, fix!!!
-    //document.getElementById("dueDate").value = formatDate(task.dueDate);
+    console.log(task.dueDate.split("-")); // month day year
+    let arr = task.dueDate.split("-");
+    arr = [arr[2], arr[0], arr[1]].join("-");
+    document.getElementById("dueDate").value = arr;
     document.getElementById("priority").value = task.priority;
 
     const gbutton = document.querySelector(".green");
@@ -112,6 +116,8 @@ function setupEditForm(task) {
             const temp = task.title;
             task.title = document.getElementById("title").value;
             task.description = document.getElementById("description").value;
+
+            task.dueDate = formatDate(document.getElementById("dueDate").value);
 
             task.priority = document.getElementById("priority").value;
 
@@ -129,7 +135,9 @@ function setupEditForm(task) {
             projects[currentProject].flag = false;
             // save to local when you add task or project
             localStorage.setItem('projects', JSON.stringify(projects));
-            location.reload();
+
+            // serves as a way to refresh data
+            changeProjectD(currentProject);
         }
 
     })

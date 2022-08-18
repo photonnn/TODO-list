@@ -40,13 +40,15 @@ loadFromStorage();
     - change projectId and id to calculate id based on what is the biggest id
         present on the current project/projects and then add 1, this way
         it is not based on length and dupe bugs do not appear -///-
-    - Fix dates for editing!
+    - Fix dates for editing! -///-
     - Do something with project dates, maybe content border to signify the late
-        project
+        project -///-
     - Make a refresh function, that reloads, maybe just changeProject so you
         don't have to location.reload()
     - TextArea expanding D: -///-
     - consider more cols and row for TextArea -///-
+    - Rethink the need for dueDate in project, I think not needed!! -///-
+    - Prevent from inputting non alphabet characters in input
 */
 
 
