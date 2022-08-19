@@ -104,6 +104,13 @@ function setupEditForm(title) {
     delete projects[currentProject].tasks[title];
 
     localStorage.setItem('projects', JSON.stringify(projects));
+
+    const rbutton = document.querySelector(".red");
+    rbutton.style.display = "none";
+
+    const gbutton = document.querySelector(".green");
+    gbutton.style.backgroundColor = "yellow";
+    gbutton.textContent = "Edit"
 }
 
 export { setupTaskD };

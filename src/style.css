@@ -316,6 +316,7 @@ body {
 
 .redBtn {
     background-color: red;
+    margin-right: 25%;
 }
 
 .greenBtn {
@@ -335,7 +336,7 @@ body {
 
 .fbtn {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
 }
 

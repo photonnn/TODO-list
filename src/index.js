@@ -52,10 +52,15 @@ loadFromStorage();
         reason -///-
     - ghost task appearing: bug -///-
     - make red button recover the task, you have all the data needed in the form
+        , instead reworked to include only edit button -///-
     - add keybinds, especially enter instead of mouse click
     - CLEAN CODE!!!!! you know currentProject repeat all the time and other jazz
     - experiment with working_task, try to remove
     - rework modules, maybe no need to generalize everything, experiment
+    - cleaner css, more comments, consider animations/transformations for 
+        consider remaking css ground up, make it work on mobile first
+    - delete the task only after the edit form is submitted, potentially use
+    async/wait function
 */
 
 

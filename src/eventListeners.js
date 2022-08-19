@@ -7,8 +7,8 @@ import { getDate, formatDate, expireCheck, proj_expireCheck } from './date.js';
 // it resets every time website refreshes so duplication bug occurs,
 // and it's more efficient, (little bit lol)
 
-const addTask = document.querySelector("#addTask");
-addTask.addEventListener('click', () => {
+const addTaskBtn = document.querySelector("#addTask");
+addTaskBtn.addEventListener('click', () => {
     showFormAndCover();
 });
 
@@ -24,6 +24,17 @@ function showFormAndCover() {
 // thought it would easy to put all form related code to the submit btn listener
 const gbutton = document.querySelector(".green");
 gbutton.addEventListener('click', () => {
+    addTask();
+});
+
+const form = document.querySelector("#taskForm");
+form.addEventListener('keydown', (e) => {
+    if (e.code == "Enter") {
+        addTask();
+    }
+});
+
+const addTask = () => {
     // run only if not editing, we have 2 event listners on one button
     // so this forces the other one to work alone, which is what we want
 
@@ -45,12 +56,18 @@ gbutton.addEventListener('click', () => {
         addTaskD(task, currentProject);
         setupTaskD(task);
 
+        const rbutton = document.querySelector(".red");
+        rbutton.style.display = "flex";
+
+        const gbutton = document.querySelector(".green");
+        gbutton.style.backgroundColor = "green";
+        gbutton.textContent = "Add";
 
         // save to local when you add task or project
         localStorage.setItem('projects', JSON.stringify(projects));
         console.log(projects);
-    }
-});
+    };
+}
 
 function resetForm() {
     const form = document.querySelector("#taskForm");
@@ -126,8 +143,8 @@ function getProject() {
 
 }
 
-const addProject = document.querySelector("#addProject");
-addProject.addEventListener('click', () => {
+const addProjectBtn = document.querySelector("#addProject");
+addProjectBtn.addEventListener('click', () => {
     const projForm = document.querySelector("#projectForm")
     projForm.style.visibility = "visible";
     const cover = document.querySelector(".cover");
@@ -136,6 +153,10 @@ addProject.addEventListener('click', () => {
 
 const proj_gbutton = document.querySelector(".proj_green");
 proj_gbutton.addEventListener('click', () => {
+    addProject();
+});
+
+const addProject = () => {
     const project = getProject();
     if (!project) {
         alert("Failure, can't repeat project name")
@@ -152,7 +173,14 @@ proj_gbutton.addEventListener('click', () => {
         // save to local when you add task or project
         localStorage.setItem('projects', JSON.stringify(projects));
     }
-});
+}
+
+const projForm = document.querySelector("#projectForm");
+projForm.addEventListener("keydown", (e) => {
+    if (e.code == "Enter") {
+        addProject();
+    }
+})
 
 const proj_rbutton = document.querySelector(".proj_red");
 proj_rbutton.addEventListener('click', () => {
