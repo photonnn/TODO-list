@@ -1,7 +1,7 @@
 import './style.css';
 import './eventListeners';
 import './date';
-import { loadFromStorage } from './control';
+import { loadFromStorage } from './utility';
 
 loadFromStorage();
 /*

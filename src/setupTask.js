@@ -1,20 +1,17 @@
 import { eraseTaskD } from './dom.js';
-import { showFormAndCover } from './eventListeners.js';
-import { deleteTask, projects } from './todo.js';
-
-let working_task;
+import { showFormAndCover } from './forms.js';
+import { projects } from './todo.js';
+import { getTitle, deleteTask } from './utility.js'
 
 
 // "Control" function
-const setupTaskD = (task) => {
-    working_task = task; // object
-
-    uI();
-    setupEditButton();
-    setupDeleteButton();
+export const setupTaskD = (task) => {
+    doUI(task);
+    setupEditButton(task);
+    setupDeleteButton(task);
 };
 
-const uI = () => {
+const doUI = (working_task) => {
     const taskNode = document.querySelector(`.${working_task.id}`);
 
     const title = document.createElement("div");
@@ -36,7 +33,7 @@ const uI = () => {
 };
 
 
-const setupDeleteButton = () => {
+const setupDeleteButton = (working_task) => {
     const btn = document.createElement('button');
     btn.textContent = "X";
 
@@ -56,18 +53,7 @@ const setupDeleteButton = () => {
     });
 };
 
-function getTitle(taskID) {
-    const currentProject = document.querySelector(".selected").textContent;
-    let title;
-    for (let em in projects[currentProject].tasks) {
-        if (projects[currentProject].tasks[em].id == taskID) {
-            title = projects[currentProject].tasks[em].title;
-        }
-    }
-    return title;
-}
-
-const setupEditButton = () => {
+const setupEditButton = (working_task) => {
     const btn = document.createElement('button');
     btn.textContent = "Edit";
 
@@ -112,5 +98,3 @@ function setupEditForm(title) {
     gbutton.style.backgroundColor = "yellow";
     gbutton.textContent = "Edit"
 }
-
-export { setupTaskD };

@@ -1,3 +1,5 @@
+import { expireCheck } from './date.js';
+
 function storageAvailable(type) {
     let storage;
     try {
@@ -23,7 +25,7 @@ function storageAvailable(type) {
     }
 }
 
-const projects = {
+export const projects = {
     HOME: {
         tasks: {
         },
@@ -41,20 +43,12 @@ if (storageAvailable) {
     //projects = localStorage.getItem('projects');
 }
 
-const todo = (title, description, dueDate, priority, id) => {
+export const todo = (title, description, dueDate, priority, id) => {
     return { title, description, dueDate, priority, id };
 };
 
-function deleteTask(project, task) {
-    console.log(project);
-    delete projects[project].tasks[task.title];
-    // we are actually deleting, not just erasing from screen!!!
-    localStorage.setItem('projects', JSON.stringify(projects));
-}
-
-const projectFactory = (title/*, dueDate*/, id) => {
+export const projectFactory = (title/*, dueDate*/, id) => {
     return { title/*, dueDate*/, id };
 };
 
 // temp
-export { projects, todo, deleteTask, projectFactory }
