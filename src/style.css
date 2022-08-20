@@ -445,7 +445,7 @@ body {
         top: 0;
         width: 100%;
         min-height: 100%;
-        height: fit-content;
+        height: min-content;
         overflow-y: auto;
         text-align: center;
         align-items: center;
