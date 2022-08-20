@@ -146,7 +146,7 @@ body {
     border-radius: 10%;
 }
 
-#tasks>div>div{
+#tasks>div>div {
     word-break: break-word;
     font-size: 3vh;
 }
@@ -438,6 +438,25 @@ body {
         padding-right: 5%;
         height: 400px;
         width: 400px;
+    }
+
+    #taskForm label,
+    #projectForm label {
+        flex: 1;
+        min-width: 120px;
+        font-size: 3vh;
+    }
+
+    #taskForm input,
+    #taskForm select {
+        flex: 6;
+        min-width: 170px;
+    }
+
+    #description {
+        height: 120px;
+        max-width: 170px;
+        resize: none;
     }
 
     .RPB {
