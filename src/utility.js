@@ -3,6 +3,7 @@ import { setupTaskD } from './setupTask.js';
 import { projects } from './todo.js';
 import { addProjectListener } from './eventListeners.js';
 import { addRPB, removeRPB } from './setupProject';
+import { expireCheck } from './date.js'
 
 
 // felt like this deserves a seperate module, since it's not really DOM manip.

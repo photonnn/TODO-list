@@ -20,6 +20,7 @@ body {
     display: flex;
 }
 
+
 #sidebar {
     flex: 1;
     background-color: var(--zinc);
@@ -34,7 +35,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    ;
 }
 
 .home {
@@ -59,10 +59,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-direction: column;
+    flex-direction: column-reverse;
     height: 100%;
     width: 100%;
 }
+
 
 .expand {
     display: flex;
@@ -143,11 +144,11 @@ body {
     justify-content: space-around;
     align-items: center;
     border-radius: 10%;
-    font-size: clamp(0, 2rem, calc(2rem + 2.5vh));
 }
 
-#tasks>div>div {
+#tasks>div>div{
     word-break: break-word;
+    font-size: 3vh;
 }
 
 .Must {
@@ -180,18 +181,23 @@ body {
 
 .header .RPB {
     background-color: red;
-    color: rgb(85, 3, 19);
-    font-size: 2rem;
-    padding: 1%;
     position: absolute;
+    height: max(55px, 7vh);
+    width: max(55px, 7vh);
+    font-size: max(40px, 3rem);
     right: 0;
+    top: 0;
+    color: rgb(85, 3, 19);
 }
 
 #addTask {
-    font-size: 40px;
+    display: flex;
+    align-items: center;
+    font-size: max(40px, 3rem);
     color: white;
     background-color: black;
     user-select: none;
+    height: max(55px, 7vh);
 }
 
 #addTask:hover {
@@ -259,11 +265,10 @@ body {
 #projectForm,
 #taskForm,
 #confirmationForm {
-    visibility: hidden;
     position: absolute;
     z-index: 2;
     background-color: var(--stone);
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
@@ -280,6 +285,7 @@ body {
     height: 100%;
     display: none;
 }
+
 
 #taskForm div,
 #projectForm div {
@@ -344,6 +350,7 @@ body {
     border: 5px solid red;
 }
 
+
 .task_desc {
     overflow-y: auto;
     flex: 6;
@@ -354,7 +361,9 @@ body {
     flex: 1;
 }
 
-.task_title, .task_desc, .task_dueDate {
+.task_title,
+.task_desc,
+.task_dueDate {
     border-bottom: 1px solid rgba(0, 0, 0, 0.212);
     display: flex;
     justify-content: center;
@@ -367,9 +376,80 @@ body {
     padding: 0 6%;
 }
 
-.taskButtons  > button {
-    font-size: 1.5rem;
+.taskButtons>button {
+    font-size: 3vh;
     color: white;
     background-color: black;
     opacity: 0.5;
+}
+
+.mobile {
+    display: none;
+}
+
+
+
+@media only screen and (max-width: 1100px) {
+
+    body,
+    html {
+        height: 100%;
+    }
+
+    .mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 55px;
+        height: 55px;
+        color: black;
+        overflow: hidden;
+        background-color: black;
+        border-right: 1px solid white;
+    }
+
+    .mobile:hover {
+        cursor: pointer;
+    }
+
+    #sidebar {
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        display: none;
+        max-height: 100vh;
+        max-width: min(75%, 300px);
+    }
+
+    #projectForm,
+    #taskForm,
+    #confirmationForm {
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        text-align: center;
+        max-width: 100%;
+        padding-right: 5%;
+    }
+
+    .RPB {
+        font-size: 40px;
+        z-index: 1;
+    }
+
+    #date {
+        max-width: 250px;
+        font-size: 2rem;
+    }
+
+    #addTask {
+        margin: 0 100px;
+    }
+
 }

@@ -60,14 +60,14 @@ export function showFormAndCover() {
     const form = document.querySelector("#taskForm");
     const cover = document.querySelector(".cover");
     cover.style.display = "block";
-    form.style.visibility = "visible";
+    form.style.display = "flex";
 }
 
 export function resetForm() {
     const form = document.querySelector("#taskForm");
     const cover = document.querySelector(".cover");
     form.reset();
-    form.style.visibility = "hidden";
+    form.style.display = "none";
     cover.style.display = "none";
 
     // this is also default, present in date.js!
@@ -137,7 +137,7 @@ export function resetProjForm() {
     const cover = document.querySelector(".cover");
     document.getElementById("proj_title").value = "";
     //document.getElementById("proj_dueDate").value = "";
-    form.style.visibility = "hidden";
+    form.style.display = "none";
     cover.style.display = "none";
 
     // this is also default, present in date.js!
@@ -147,14 +147,14 @@ export function resetProjForm() {
 
 export function resetConfForm() {
     const confForm = document.querySelector("#confirmationForm");
-    confForm.style.visibility = "hidden";
+    confForm.style.display = "none";
     const cover = document.querySelector(".cover");
     cover.style.display = "none";
 }
 
 export function showConfirmationForm() {
     const form = document.querySelector("#confirmationForm");
-    form.style.visibility = "visible";
+    form.style.display = "flex";
     const cover = document.querySelector(".cover");
     cover.style.display = "block";
 }

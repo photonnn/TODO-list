@@ -32,7 +32,7 @@ rbutton.addEventListener('click', () => {
 const addProjectBtn = document.querySelector("#addProject");
 addProjectBtn.addEventListener('click', () => {
     const projForm = document.querySelector("#projectForm")
-    projForm.style.visibility = "visible";
+    projForm.style.display = "flex";
     const cover = document.querySelector(".cover");
     cover.style.display = "block";
 });
@@ -73,6 +73,12 @@ export const addProjectListener = (id) => {
         const temp = document.querySelector('.selected');
         temp.classList.remove("selected");
         project.classList.add("selected");
+        if (window.innerWidth < "1024") {
+            const sidebar = document.querySelector("#sidebar");
+            const mobileBtn = document.querySelector(".mobile");
+            sidebar.style.display = "none";
+            mobileBtn.style.display = "initial";
+        }
         changeProjectD(project.textContent);
     });
 }
