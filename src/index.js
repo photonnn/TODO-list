@@ -64,6 +64,9 @@ loadFromStorage();
     async/wait function
     - rework mobile design, perhaps addTask on top and calander on bottom,
     might feel more natural -///-
+
+    Potential bugs:
+        Small blank rectangle appearing sometimes when resizing. Refresh fixes.
 */
 
 

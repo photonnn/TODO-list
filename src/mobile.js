@@ -11,15 +11,24 @@ mobileBtn.addEventListener('click', () => {
 
 const sidebar = document.querySelector("#sidebar");
 window.addEventListener('resize', () => {
-    if (sidebar.style.display == "none" && window.innerWidth > "1024") {
+    if (window.innerWidth > "1024") {
         sidebar.style.display = "flex";
     }
+    if (window.innerWidth < "1024") {
+        sidebar.style.display = "none";
+        mobileBtn.style.display = "flex";
+    }
+   // //if (sidebar.style.display != "flex") {
+      //  mobileBtn.style.display = "none";
+    //}
 })
 
 const content = document.querySelector("#content");
 content.addEventListener("click", () => {
     if (window.innerWidth < "1024") {
         sidebar.style.display = "none";
-        mobileBtn.style.display = "initial";
+        mobileBtn.style.display = "flex";
     }
 })
+
+// There might be a more efficient way. This seems to work though.
