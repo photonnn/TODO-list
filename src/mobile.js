@@ -11,10 +11,10 @@ mobileBtn.addEventListener('click', () => {
 
 const sidebar = document.querySelector("#sidebar");
 window.addEventListener('resize', () => {
-    if (window.innerWidth > "1024") {
+    if (window.innerWidth > "1100") {
         sidebar.style.display = "flex";
     }
-    if (window.innerWidth < "1024") {
+    if (window.innerWidth < "1100") {
         sidebar.style.display = "none";
         mobileBtn.style.display = "flex";
     }
@@ -25,7 +25,7 @@ window.addEventListener('resize', () => {
 
 const content = document.querySelector("#content");
 content.addEventListener("click", () => {
-    if (window.innerWidth < "1024") {
+    if (window.innerWidth < "1100") {
         sidebar.style.display = "none";
         mobileBtn.style.display = "flex";
     }
