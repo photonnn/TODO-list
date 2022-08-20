@@ -13,6 +13,7 @@ const sidebar = document.querySelector("#sidebar");
 window.addEventListener('resize', () => {
     if (window.innerWidth > "1100") {
         sidebar.style.display = "flex";
+        mobileBtn.style.display = "none";
     }
     if (window.innerWidth < "1100") {
         sidebar.style.display = "none";
