@@ -63,7 +63,7 @@ loadFromStorage();
     - delete the task only after the edit form is submitted, potentially use
     async/wait function
     - rework mobile design, perhaps addTask on top and calander on bottom,
-    might feel more natural
+    might feel more natural -///-
 */
 
 
