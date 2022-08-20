@@ -446,7 +446,6 @@ body {
         width: 100%;
         min-height: 100%;
         height: min-content;
-        overflow-y: auto;
         text-align: center;
         align-items: center;
     }
