@@ -527,10 +527,10 @@ body {
     }
 
     
-    #content,
-    #sidebar,
-    #taskForm,
-    #projectForm {
+    #content:playing,
+    #sidebar:playing,
+    #taskForm:playing,
+    #projectForm:playing {
         height: 100vh !important;
     }
 
