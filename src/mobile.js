@@ -22,7 +22,7 @@ window.addEventListener('resize', () => {
    // //if (sidebar.style.display != "flex") {
       //  mobileBtn.style.display = "none";
     //}
-})
+});
 
 const content = document.querySelector("#content");
 content.addEventListener("click", () => {
@@ -30,6 +30,6 @@ content.addEventListener("click", () => {
         sidebar.style.display = "none";
         mobileBtn.style.display = "flex";
     }
-})
+});
 
 // There might be a more efficient way. This seems to work though.

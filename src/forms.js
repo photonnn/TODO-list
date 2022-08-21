@@ -51,6 +51,14 @@ export const addTask = () => {
         gbutton.style.backgroundColor = "rgb(47, 255, 47)";
         gbutton.textContent = "Add";
 
+        // attempt at "refreshing" the height, because it sometimes forgets
+        // it needs to be 100vh on mobile browsers >-.-<
+        const sidebar = document.querySelector("#siderbar");
+        sidebar.style.height = "100vh";
+
+        const content = document.querySelector("#content");
+        content.style.height = "100vh";
+
         // save to local when you add task or project
         localStorage.setItem('projects', JSON.stringify(projects));
     };
