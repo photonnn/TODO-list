@@ -526,11 +526,12 @@ body {
         margin: 0 100px;
     }
 
-    #content:fullscreen,
-    #sidebar:fullscreen,
-    #taskForm:fullscreen,
-    #projectForm:fullscreen {
-        height: 100vh;
+    
+    #content,
+    #sidebar,
+    #taskForm,
+    #projectForm {
+        height: 100vh !important;
     }
 
 }
