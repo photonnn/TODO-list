@@ -446,7 +446,6 @@ body {
         top: 0;
         width: 100%;
         min-height: 100%;
-        max-height: 100vh;
         height: min-content;
         text-align: center;
         align-items: center;
