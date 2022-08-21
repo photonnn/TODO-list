@@ -2,7 +2,7 @@ import './style.css';
 import './eventListeners';
 import './date';
 import './mobile';
-import { loadFromStorage } from './utility';
+import { loadFromStorage } from './setupTask';
 
 loadFromStorage();
 /*
@@ -12,7 +12,7 @@ loadFromStorage();
             1. Something that needs to be done on a specific day. It can have a
                 dueDate/dueHour, but it's optional. It only shows on one day
             2. Something that needs to be done till a specified dueDate. So it
-                shows every day until the dueDate. Expired section might be 
+                shows every day until the dueDate. Expired section might be
                 of use.
 
             Idea:
@@ -20,15 +20,13 @@ loadFromStorage();
             expired simply nedote so using red border or (expired) tag.
             It can be shown if its start day is today or earlier. -///-
 
-
-
     - Add a form for user input -///-
     - Task changes:
             1) Style changes: Redo task squares -///-, maybe not
             2) Task description/edit system -///-
             3) Make priorites matter, border color -///-
     - FIX remove button, namely when you don't input anything in the form
-        multiple tasks are made event though there is only one saved in the 
+        multiple tasks are made event though there is only one saved in the
         object. it shows correctly after refresh -///-
     - FIX: prevent from changing projects when the form is opened,
         consider adding a cover just like in the library project -///-
@@ -58,7 +56,7 @@ loadFromStorage();
     - CLEAN CODE!!!!! you know currentProject repeat all the time and other jazz
     - experiment with working_task, try to remove -///-
     - rework modules, maybe no need to generalize everything, experiment
-    - cleaner css, more comments, consider animations/transformations for 
+    - cleaner css, more comments, consider animations/transformations for
         consider remaking css ground up, make it work on mobile first
     - delete the task only after the edit form is submitted, potentially use
     async/wait function
@@ -68,5 +66,3 @@ loadFromStorage();
     Potential bugs:
         Small blank rectangle appearing sometimes when resizing. Refresh fixes.
 */
-
-
