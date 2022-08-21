@@ -18,6 +18,8 @@ html {
 
 body {
     display: flex;
+    position: fixed;
+    overflow: auto;
 }
 
 
@@ -524,14 +526,6 @@ body {
 
     #addTask {
         margin: 0 100px;
-    }
-
-    
-    #content:playing,
-    #sidebar:playing,
-    #taskForm:playing,
-    #projectForm:playing {
-        height: 100vh !important;
     }
 
 }
