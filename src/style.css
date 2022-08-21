@@ -439,7 +439,8 @@ body {
         height: 200px;
     }
 
-    #taskForm, #projectForm {
+    #taskForm,
+    #projectForm {
         position: absolute;
         left: 0;
         top: 0;
@@ -524,6 +525,13 @@ body {
 
     #addTask {
         margin: 0 100px;
+    }
+
+    #content:fullscreen,
+    #sidebar:fullscreen,
+    #taskForm:fullscreen,
+    #projectForm:fullscreen {
+        height: 100vh;
     }
 
 }
