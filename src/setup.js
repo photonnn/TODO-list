@@ -191,3 +191,10 @@ export const loadFromStorage = () => {
     setupTaskD(projects.HOME.tasks[task], 'HOME');
   });
 };
+
+// Previous setupProject and setupTask have merged due to eslint shouting at me
+// for dependency cycle errors. I have merged them together into this setup
+// file. Ideally I would find another way to spit this module into more pieces,
+// this would all have been easier, if I had used eslint from start, so work to
+// be done here, if more code is to be included, especially code that is related
+// to any kind of setup.
