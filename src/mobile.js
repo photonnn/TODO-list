@@ -1,22 +1,20 @@
+// menu button
 const mobileBtn = document.querySelector(".mobile");
 mobileBtn.addEventListener("click", () => {
   const sidebar = document.querySelector("#sidebar");
-  if (sidebar.style.display === "flex") {
-    sidebar.style.display = "none";
-  } else {
-    sidebar.style.display = "flex";
-    mobileBtn.style.display = "none";
-  }
+  sidebar.classList.add('visible');
+  mobileBtn.style.display = "none";
 });
 
+// more dynamic menu
 const sidebar = document.querySelector("#sidebar");
 window.addEventListener("resize", () => {
   if (window.innerWidth > "1100") {
-    sidebar.style.display = "flex";
+    sidebar.classList.add('visible');
     mobileBtn.style.display = "none";
   }
   if (window.innerWidth < "1100") {
-    sidebar.style.display = "none";
+    sidebar.classList.remove('visible');
     mobileBtn.style.display = "flex";
   }
   // //if (sidebar.style.display != "flex") {
@@ -24,10 +22,11 @@ window.addEventListener("resize", () => {
   // }
 });
 
+// when you click on content the menu disappears
 const content = document.querySelector("#content");
 content.addEventListener("click", () => {
   if (window.innerWidth < "1100") {
-    sidebar.style.display = "none";
+    sidebar.classList.remove('visible');
     mobileBtn.style.display = "flex";
   }
 });
