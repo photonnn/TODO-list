@@ -2,7 +2,7 @@ import './style.css';
 import './eventListeners';
 import './date';
 import './mobile';
-import { loadFromStorage } from './setupTask';
+import { loadFromStorage } from './setup';
 
 loadFromStorage();
 /*

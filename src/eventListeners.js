@@ -1,5 +1,5 @@
 import { checkDueDate, showFormAndCover } from './utility';
-import { onClickingRPB } from './setupTask';
+import { onClickingRPB } from './setup';
 import {
   addTask, resetForm, addProject, resetProjForm, resetConfForm,
 } from './forms';

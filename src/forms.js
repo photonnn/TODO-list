@@ -1,5 +1,5 @@
 import { addProjectD, addTaskD } from './dom';
-import { setupTaskD, addProjectListener } from './setupTask';
+import { setupTaskD, addProjectListener } from './setup';
 import { projectFactory, projects, todo } from './todo';
 import { formatDate, getDate } from './date';
 
