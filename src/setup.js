@@ -151,8 +151,8 @@ export function addProjectListener(id) {
     if (window.innerWidth < "1024") {
       const sidebar = document.querySelector("#sidebar");
       const mobileBtn = document.querySelector(".mobile");
-      sidebar.style.display = "none";
-      mobileBtn.style.display = "initial";
+      sidebar.classList.remove('visible');
+      mobileBtn.style.display = "flex";
     }
     changeProjectD(project.textContent);
   });

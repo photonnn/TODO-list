@@ -11,10 +11,13 @@ const sidebar = document.querySelector("#sidebar");
 window.addEventListener("resize", () => {
   if (window.innerWidth > "1100") {
     sidebar.classList.add('visible');
+    sidebar.classList.add('notransition');
     mobileBtn.style.display = "none";
+    
   }
   if (window.innerWidth < "1100") {
     sidebar.classList.remove('visible');
+    sidebar.classList.remove('notransition');
     mobileBtn.style.display = "flex";
   }
   // //if (sidebar.style.display != "flex") {
