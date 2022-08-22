@@ -164,7 +164,6 @@ export function onClickingRPB() {
   const projectName2 = document.querySelector('.selected').textContent;
   const projectID = projects[projectName2].id;
   delete projects[projectName2];
-  console.log(projects);
   const project = document.querySelector(`#${projectID}`);
   project.remove();
 

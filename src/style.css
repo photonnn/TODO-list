@@ -19,7 +19,7 @@ html {
 body {
     display: flex;
     position: fixed;
-    overflow: auto;
+    overflow-y: scroll;
 }
 
 
